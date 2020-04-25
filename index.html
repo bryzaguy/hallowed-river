@@ -2,37 +2,135 @@
   <head>
     <title>Hallowed River</title>
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto|Sorts+Mill+Goudy&display=swap"
+      href="https://fonts.googleapis.com/css?family=Lato|Roboto|Sorts+Mill+Goudy&display=swap"
       rel="stylesheet"
     />
+    <meta content="Hallowed River,Hindsight,Meditation,Piano,Analog,Record,Vinyl,Vinyl Pressing,LP,EP,Vinylize,Press" name="keywords">
+    <meta content="Hallowed River's debut album, Hindsight, is a collection of guided musical meditations to aid growth-minded individuals as they create art, practice yoga, or hold space to reflect.
+    Each song is titled by affirmation, and intended as a sound track to realizing the self in your mind’s eye." name="description">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <meta content="telephone=no" name="format-detection">
+    <meta content="Hindsight" property="og:title">
+    <meta content="Hallowed River" property="og:site_name">
+    <meta content="music.album" property="og:type">
+    <meta content="Hallowed River's debut album, Hindsight, is a collection of guided musical meditations to aid growth-minded individuals as they create art, practice yoga, or hold space to reflect.
+    Each song is titled by affirmation, and intended as a sound track to realizing the self in your mind’s eye." property="og:description">
+    <meta content="https://hallowedriver.com" property="og:url">
+    <meta content="https://d1x26sjkwh9vok.cloudfront.net/uploads/image/20200422/4d32020b-6130-4492-94e9-effaea4ddbcc.png" property="og:image">
+    <meta content="780809128639133" property="fb:app_id">
+    <meta property="og:locale">
+    <meta property="og:locale:alternate">
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '550736455850951');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=550736455850951&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         background: url(https://github.com/bryzaguy/hallowed-river/blob/master/foggy-forest.jpg?raw=true);
         background-size: cover;
+        background-position: bottom;
+        font-family: "Roboto", sans-serif;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -webkit-font-feature-settings: "kern";
+        font-feature-settings: "kern";
+        margin: 0;
       }
 
       .hero {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin-top: 20em;
+        /* margin-top: 20em; */
         color: lightgrey;
+      }
+
+      .small-record-pic {
+        height: 75px;
+        transform-origin: 25% center;
+        transform: scale(1.5);
+        z-index: 1;
+        margin-right: 2rem;
       }
 
       h1 {
         font-family: "Sorts Mill Goudy", sans-serif;
-        font-size: 8vw;
+        /* font-size: 8vw; */
         line-height: 1;
         margin: 0;
       }
 
       p {
-        font-family: "Roboto", sans-serif;
         color: white;
         line-height: 1;
         margin: 0;
-        margin-top: 40em;
-        margin-bottom: 10em;
+        /* margin-top: 40em; */
+        /* margin-bottom: 10em; */
+      }
+
+      .qrates-container {
+        transition: 1s;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        border-radius: 38px;
+        transform: scale(1.25) translateX(-92px);
+        margin-left: 1rem;
+        margin-right: 3rem;
+        max-width: 38px;
+        height: 38px;
+        transform-origin: left;
+        z-index: 2;
+        box-shadow: 0 0 10px rgba(0,0,0,0.15);
+      }
+      
+      .player {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100%;
+      }
+
+      .open .qrates-container {
+        max-width: 230px;
+        transform: scale(1.25) translateX(0);
+      }
+
+      .open .qrates-iframe {
+        transform: translateX(0);
+      }
+
+      .qrates-iframe {
+        position: relative;
+        transition: 1s;
+        /* transition-delay: 1s; */
+        transform: translateX(-29px);
+        top: -180px;
+        left: -2px;
+        border: none;
+        width: 298px;
+        height: 418px;
+      }
+
+      .fireflies {
+        position: fixed;
       }
     </style>
     <script>
@@ -366,7 +464,7 @@
           options.action = function () {};
         }
 
-        if (document.readyState === "interactive") {
+        if (document.readyState === "complete") {
           setup();
         } else {
           document.addEventListener("DOMContentLoaded", setup);
@@ -381,14 +479,19 @@
         // create canvas for drawing
         function setup() {
           // create
-          canvas = document.createElement("canvas");
-          document.body.appendChild(canvas);
+          // canvas = document.createElement("canvas");
+          canvas = document.querySelector('.fireflies')
 
           // correct canvas size on window resize
           window.addEventListener("resize", fitCanvas);
 
+          setTimeout(() => {
+            var player = document.querySelector('.player')
+            player.classList.add('open')
+          }, 2000)
+
           // go
-          go();
+          // go();
         }
 
         // canvas has been attached, let's go!
@@ -847,14 +950,168 @@
     </script>
   </head>
   <body>
+    <style>
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        padding: 1rem 2rem;
+        border: 0;
+        margin: 0;
+        top: 0;
+        width: 100%;
+        background-color: #F9F9FA;
+      }
+
+      @media only screen and (max-width: 750px) {
+        .header {
+          flex-direction: column;
+        }
+
+        .action {
+          margin-top: 1rem;
+          width: 100%;
+        }
+
+        .action .button {
+          width: 100%;
+        }
+      }
+
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        align-self: flex-end;
+        padding: .75rem 2rem;
+        border-radius: calc(240px / 2);
+        border-radius: 4px;
+        color: #FFF;
+        font-family: "Lato", Helvetica, Arial, Verdana, "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", sans-serif;
+        text-align: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-decoration: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        cursor: pointer;
+        outline: 0;
+        box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.5);
+        transition: .1s;
+        background-color: #4AB7E9;
+      }
+
+      .button:hover, .button:active {
+        position: relative;
+        transform: translateY(-1px);
+        box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.5);
+        background-color: #55C8FC;
+      }
+
+      .preorder {
+        font-size: .9rem;
+        text-transform: uppercase;
+        line-height: 2;
+        white-space: nowrap;
+        font-family: "Lato", Helvetica, Arial, Verdana, "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", sans-serif;
+      }
+
+      .button-label {
+        text-transform: uppercase;
+        font-size: 1.25rem;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+      }
+
+      .checkmark {
+        display: inline-block;
+        position: relative;
+        margin-right: .5rem;
+        width: 1rem;
+        height: 1rem;
+        filter: invert();
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuMzM0IDExLjk2Yy0uNzEzLS43MjYtLjg3Mi0xLjgyOS0uMzkzLTIuNzI3LjM0Mi0uNjQuMzY2LTEuNDAxLjA2NC0yLjA2Mi0uMzAxLS42Ni0uODkzLTEuMTQyLTEuNjAxLTEuMzAyLS45OTEtLjIyNS0xLjcyMi0xLjA2Ny0xLjgwMy0yLjA4MS0uMDU5LS43MjMtLjQ1MS0xLjM3OC0xLjA2Mi0xLjc3LS42MDktLjM5My0xLjM2Ny0uNDc4LTIuMDUtLjIyOS0uOTU2LjM0Ny0yLjAyNi4wMzItMi42NDItLjc3Ni0uNDQtLjU3Ni0xLjEyNC0uOTE1LTEuODUtLjkxNS0uNzI1IDAtMS40MDkuMzM5LTEuODQ5LjkxNS0uNjEzLjgwOS0xLjY4MyAxLjEyNC0yLjYzOS43NzctLjY4Mi0uMjQ4LTEuNDQtLjE2My0yLjA1LjIyOS0uNjEuMzkyLTEuMDAzIDEuMDQ3LTEuMDYxIDEuNzctLjA4MiAxLjAxNC0uODEyIDEuODU3LTEuODAzIDIuMDgxLS43MDguMTYtMS4zLjY0Mi0xLjYwMSAxLjMwMnMtLjI3NyAxLjQyMi4wNjUgMi4wNjFjLjQ3OS44OTcuMzIgMi4wMDEtLjM5MiAyLjcyNy0uNTA5LjUxNy0uNzQ3IDEuMjQyLS42NDQgMS45NnMuNTM2IDEuMzQ3IDEuMTcgMS43Yy44ODguNDk1IDEuMzUyIDEuNTEgMS4xNDQgMi41MDUtLjE0Ny43MS4wNDQgMS40NDguNTE5IDEuOTk2LjQ3Ni41NDkgMS4xOC44NDQgMS45MDIuNzk4IDEuMDE2LS4wNjMgMS45NTMuNTQgMi4zMTcgMS40ODkuMjU5LjY3OC44MiAxLjE5NSAxLjUxNyAxLjM5OS42OTUuMjA0IDEuNDQ3LjA3MiAyLjAzMS0uMzU3LjgxOS0uNjAzIDEuOTM2LS42MDMgMi43NTQgMCAuNTg0LjQzIDEuMzM2LjU2MiAyLjAzMS4zNTcuNjk3LS4yMDQgMS4yNTgtLjcyMiAxLjUxOC0xLjM5OS4zNjMtLjk0OSAxLjMwMS0xLjU1MyAyLjMxNi0xLjQ4OS43MjQuMDQ2IDEuNDI3LS4yNDkgMS45MDItLjc5OC40NzUtLjU0OC42NjctMS4yODYuNTE5LTEuOTk2LS4yMDctLjk5NS4yNTYtMi4wMSAxLjE0NS0yLjUwNS42MzMtLjM1NCAxLjA2NS0uOTgyIDEuMTY5LTEuN3MtLjEzNS0xLjQ0My0uNjQzLTEuOTZ6bS0xMi41ODQgNS40M2wtNC41LTQuMzY0IDEuODU3LTEuODU3IDIuNjQzIDIuNTA2IDUuNjQzLTUuNzg0IDEuODU3IDEuODU3LTcuNSA3LjY0MnoiLz48L3N2Zz4=);
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0tMS45NTkgMTdsLTQuNS00LjMxOSAxLjM5NS0xLjQzNSAzLjA4IDIuOTM3IDcuMDIxLTcuMTgzIDEuNDIyIDEuNDA5LTguNDE4IDguNTkxeiIvPjwvc3ZnPg==);
+        background-size: contain;
+      }
+
+      .action {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .record-container {
+        position: relative;
+        white-space: nowrap;
+      }
+
+      .record {
+        transition: 1s;
+        max-height: 100%;
+        position: relative;
+      }
+
+      .vinyl {
+        left: -4px;
+        transform-origin: 35% center;
+        transform: translateX(-50%) rotate(-90deg);
+      }
+      
+      .sleave {
+        z-index: 1;
+        transform: translateX(38.25%);
+        box-shadow: 4px 4px 10px rgba(0,0,0,.15);
+      }
+
+      .open .vinyl,
+      .record-container:hover .vinyl {
+        transform: translateX(0);
+      }
+
+      .open .sleave,
+      .record-container:hover .sleave {
+        transform: translateX(0) rotate(0deg);
+      }
+    </style>
+    <header class="header">
+      <!-- <h1>Buy the vinyl!</h1> -->
+      <div class="player">
+        <div class="record-container" style="height: 80px">
+          <img class="record sleave" src="record-cover-sleave.png">
+          <img class="record vinyl" src="record-cover-record.png">
+        </div>
+        <div class="qrates-container">
+          <iframe
+            src="https://qrates.com/widgets/19966-hindsight"
+            class="qrates-iframe"
+            scrolling="no"
+            frameborder="0"
+          ></iframe>
+          <!-- <div class="block-social"></div> -->
+        </div>
+      </div>
+      <div class="action">
+        <span class="preorder">Pre-order your vinyl</span>
+        <a class="button" target="_blank" rel="nofollow" data-method="post" href="https://qrates.com/orders/new?project_id=19966">
+          <span class="button-label">
+            <i class="checkmark"></i><span>Buy now</span><br>
+          </span>
+        </a>
+      </div>
+    </header>
     <div class="hero">
-      <h1>Hallowed River</h1>
-      <iframe
-        src="https://qrates.com/widgets/19966-hindsight"
-        scrolling="no"
-        frameborder="0"
-        style="border: none; width: 300px; height: 419px;"
-      ></iframe>
+      <!-- <img class="record-spin" src="record.png"> -->
+      <div class="record-container" style="margin-top: 2rem; max-width: 100vw; height: 25vh">
+        <img class="record sleave" src="record-cover-sleave.png">
+        <img class="record vinyl" src="record-cover-record.png">
+      </div>
     </div>
+    <canvas class="fireflies"></canvas>
   </body>
 </html>
