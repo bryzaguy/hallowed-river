@@ -131,6 +131,7 @@
 
       .fireflies {
         position: fixed;
+        display: none;
       }
     </style>
     <script>
@@ -948,6 +949,14 @@
         }
       }
     </script>
+    <script>
+      console.log('bruh')
+      window.checkout = function checkout() {
+      console.log('bruhs')
+        var checkout = document.querySelector('#checkout')
+        checkout.setAttribute('style', 'display: block;')
+      }
+    </script>
   </head>
   <body>
     <style>
@@ -1028,6 +1037,16 @@
         align-items: center;
       }
 
+      .checkout {
+        position: fixed;
+        display: none;
+        z-index: 10;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
       .checkmark {
         display: inline-block;
         position: relative;
@@ -1098,7 +1117,7 @@
       </div>
       <div class="action">
         <span class="preorder">Pre-order your vinyl</span>
-        <a class="button" target="_blank" rel="nofollow" data-method="post" href="https://qrates.com/orders/new?project_id=19966">
+        <a class="button" onclick="window.checkout()" target="checkout" rel="nofollow" data-method="post" href="https://qrates.com/orders/new?project_id=19966">
           <span class="button-label">
             <i class="checkmark"></i><span>Buy now</span><br>
           </span>
@@ -1113,5 +1132,6 @@
       </div>
     </div>
     <canvas class="fireflies"></canvas>
+    <iframe id="checkout" name="checkout" class="checkout" />
   </body>
 </html>
