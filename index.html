@@ -30,11 +30,11 @@
       t.src=v;s=b.getElementsByTagName(e)[0];
       s.parentNode.insertBefore(t,s)}(window, document,'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '550736455850951');
+      fbq('init', '2645944755624642');
       fbq('track', 'PageView');
     </script>
     <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=550736455850951&ev=PageView&noscript=1"
+      src="https://www.facebook.com/tr?id=2645944755624642&ev=PageView&noscript=1"
     /></noscript>
     <!-- End Facebook Pixel Code -->
     <style>
@@ -950,11 +950,14 @@
       }
     </script>
     <script>
-      console.log('bruh')
       window.checkout = function checkout() {
-      console.log('bruhs')
         var checkout = document.querySelector('#checkout')
-        checkout.setAttribute('style', 'display: block;')
+        checkout.setAttribute('style', 'display: block')
+      }
+
+      window.onpopstate = function handlePopState() {
+        var checkout = document.querySelector('#checkout')
+        checkout.setAttribute('style', 'display: none')
       }
     </script>
   </head>
