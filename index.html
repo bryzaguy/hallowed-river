@@ -953,6 +953,17 @@
       window.checkout = function checkout() {
         var checkout = document.querySelector('#checkout')
         checkout.setAttribute('style', 'display: block')
+        fbq('track', 'InitiateCheckout', {
+          value: 22,
+          currency: 'USD'
+        })
+
+        setTimeout(() => {
+          fbq('track', 'Purchase', {
+            value: 22,
+            currency: 'USD'
+          })
+        }, 60 * 1000)
       }
 
       window.onpopstate = function handlePopState() {
@@ -1101,6 +1112,10 @@
         transform: translateX(0) rotate(0deg);
       }
     </style>
+    <script>
+      fbq('track', 'ViewContent');
+    </script>
+        
     <header class="header">
       <!-- <h1>Buy the vinyl!</h1> -->
       <div class="player">
