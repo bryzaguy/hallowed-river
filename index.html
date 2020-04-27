@@ -953,17 +953,22 @@
       window.checkout = function checkout() {
         var checkout = document.querySelector('#checkout')
         checkout.setAttribute('style', 'display: block')
-        fbq('track', 'InitiateCheckout', {
-          value: 22,
-          currency: 'USD'
-        })
 
-        setTimeout(() => {
-          fbq('track', 'Purchase', {
+        if (!window.clickedCheckout) {
+          fbq('track', 'InitiateCheckout', {
             value: 22,
             currency: 'USD'
           })
-        }, 60 * 1000)
+
+          setTimeout(() => {
+            fbq('track', 'Purchase', {
+              value: 22,
+              currency: 'USD'
+            })
+          }, 60 * 1000)
+          
+          window.clickedCheckout = true
+        }
       }
 
       window.onpopstate = function handlePopState() {
