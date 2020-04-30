@@ -1319,15 +1319,19 @@
       <div class="description">
         <div class="title">
           <img class="title-gif" src="https://media.giphy.com/media/T1zgJ7cp8tWla/source.gif">
-          <span id="days-left">__</span> days left
+          <span id="time-left">__</span> <span id="time-unit">____</span> left
           <script>
-            setTimeout(() => {
-              var daysEl = document.querySelector('#days-left')
-              daysEl.textContent = Math.floor((new Date('Jun 16 2020 00:00 UTC') - Date.now()) / (1000 * 60 * 60 * 24))
-            }, 2000)
+            var timeEl = document.querySelector('#time-left')
+            var timeUnitEl = document.querySelector('#time-unit')
+            var timeLeft = new Date('Jun 16 2020 00:00 UTC') - Date.now()
+            var ONE_HOUR = 1000 * 60 * 60
+            var ONE_DAY = ONE_HOUR * 24
+            var lastDay = timeLeft < ONE_DAY
+            timeEl.textContent = Math.floor(timeLeft / (lastDay ? ONE_HOUR : ONE_DAY))
+            timeUnitEl.textContent = lastDay ? 'hours' : 'days'
           </script>
         </div>
-        Be one of 300 to join the crowdfunding project and pledge $22 (or more &#128591;) to get Hallowed River's limited edition vinyl for their debut album: Hindsight.
+        Be one of 300 to join the crowdfunding project and pledge $22 (or more &#128591;) to get a limited edition vinyl for Hindsight, the debut album of Hallowed River.
         <br><br>
         Number of pledges: 
 
