@@ -1068,15 +1068,21 @@
         .player .record-container {
           height: 40vw !important;
           width: 72vw !important;
+          transition: 1s;
+          transform: translateX(.5rem);
+        }
+
+        .player.open .record-container {
+          transform: translateX(1rem);
         }
 
         .qrates-container {
           margin-top: 1.5rem;
-          transform: scale(1.25) translateY(calc(-1.5rem + -20vw)) translateX(50%) translateX(-50%) !important;
+          transform: scale(1.25) translateY(calc(-1.5rem + -20vw)) translateX(.5rem) !important;
         }
 
         .player.open .qrates-container {
-          transform: scale(1.25) translateX(50%) translateX(-50%) !important;
+          transform: scale(1.25) translateX(-.5rem) !important;
         }
       }
 
@@ -1130,13 +1136,14 @@
       }
 
       .checkout {
-        position: absolute;
+        /* position: absolute; */
         display: none;
         z-index: 10;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        border: 0;
+        width: 100vw;
+        height: 100vh;
       }
 
       .checkmark {
