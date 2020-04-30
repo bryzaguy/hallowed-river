@@ -1024,6 +1024,34 @@
           padding: 1rem;
           margin-bottom: 2rem;
         }
+
+        .title {
+          font-size: 9vw !important;
+        }
+
+        .preorder {
+          font-size: 1.25rem !important;
+        }
+      }
+
+      @media only screen and (max-width: 525px) {
+        .player {
+          flex-direction: column;
+        }
+
+        .player .record-container {
+          height: 40vw !important;
+          width: 72vw !important;
+        }
+
+        .qrates-container {
+          margin-top: 1.5rem;
+          transform: scale(1.25) translateY(calc(-1.5rem + -20vw)) translateX(50%) translateX(-50%) !important;
+        }
+
+        .player.open .qrates-container {
+          transform: scale(1.25) translateX(50%) translateX(-50%) !important;
+        }
       }
 
       .button {
@@ -1048,21 +1076,22 @@
         outline: 0;
         box-shadow: 0px 1px 2px 0 rgba(0,0,0,0.5);
         transition: .1s;
-        background-color: #4AB7E9;
+        background-color: coral;
       }
 
       .button:hover, .button:active {
         position: relative;
         transform: translateY(-1px);
         box-shadow: 0px 2px 5px 0 rgba(0,0,0,0.5);
-        background-color: #55C8FC;
+        filter: brightness(125%);
       }
 
       .preorder {
-        font-size: .9rem;
+        font-size: 1rem;
         text-transform: uppercase;
         line-height: 2;
         white-space: nowrap;
+        color: #999;
         font-family: "Lato", Helvetica, Arial, Verdana, "ãƒ’ãƒ©ã‚®ãƒŽè§’ã‚´ Pro W3", "Hiragino Kaku Gothic Pro", "ãƒ¡ã‚¤ãƒªã‚ª", Meiryo, "ï¼­ï¼³ ï¼°ã‚´ã‚·ãƒƒã‚¯", sans-serif;
       }
 
@@ -1075,7 +1104,7 @@
       }
 
       .checkout {
-        position: fixed;
+        position: absolute;
         display: none;
         z-index: 10;
         top: 0;
@@ -1091,8 +1120,8 @@
         width: 1rem;
         height: 1rem;
         filter: invert();
-        /* background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuMzM0IDExLjk2Yy0uNzEzLS43MjYtLjg3Mi0xLjgyOS0uMzkzLTIuNzI3LjM0Mi0uNjQuMzY2LTEuNDAxLjA2NC0yLjA2Mi0uMzAxLS42Ni0uODkzLTEuMTQyLTEuNjAxLTEuMzAyLS45OTEtLjIyNS0xLjcyMi0xLjA2Ny0xLjgwMy0yLjA4MS0uMDU5LS43MjMtLjQ1MS0xLjM3OC0xLjA2Mi0xLjc3LS42MDktLjM5My0xLjM2Ny0uNDc4LTIuMDUtLjIyOS0uOTU2LjM0Ny0yLjAyNi4wMzItMi42NDItLjc3Ni0uNDQtLjU3Ni0xLjEyNC0uOTE1LTEuODUtLjkxNS0uNzI1IDAtMS40MDkuMzM5LTEuODQ5LjkxNS0uNjEzLjgwOS0xLjY4MyAxLjEyNC0yLjYzOS43NzctLjY4Mi0uMjQ4LTEuNDQtLjE2My0yLjA1LjIyOS0uNjEuMzkyLTEuMDAzIDEuMDQ3LTEuMDYxIDEuNzctLjA4MiAxLjAxNC0uODEyIDEuODU3LTEuODAzIDIuMDgxLS43MDguMTYtMS4zLjY0Mi0xLjYwMSAxLjMwMnMtLjI3NyAxLjQyMi4wNjUgMi4wNjFjLjQ3OS44OTcuMzIgMi4wMDEtLjM5MiAyLjcyNy0uNTA5LjUxNy0uNzQ3IDEuMjQyLS42NDQgMS45NnMuNTM2IDEuMzQ3IDEuMTcgMS43Yy44ODguNDk1IDEuMzUyIDEuNTEgMS4xNDQgMi41MDUtLjE0Ny43MS4wNDQgMS40NDguNTE5IDEuOTk2LjQ3Ni41NDkgMS4xOC44NDQgMS45MDIuNzk4IDEuMDE2LS4wNjMgMS45NTMuNTQgMi4zMTcgMS40ODkuMjU5LjY3OC44MiAxLjE5NSAxLjUxNyAxLjM5OS42OTUuMjA0IDEuNDQ3LjA3MiAyLjAzMS0uMzU3LjgxOS0uNjAzIDEuOTM2LS42MDMgMi43NTQgMCAuNTg0LjQzIDEuMzM2LjU2MiAyLjAzMS4zNTcuNjk3LS4yMDQgMS4yNTgtLjcyMiAxLjUxOC0xLjM5OS4zNjMtLjk0OSAxLjMwMS0xLjU1MyAyLjMxNi0xLjQ4OS43MjQuMDQ2IDEuNDI3LS4yNDkgMS45MDItLjc5OC40NzUtLjU0OC42NjctMS4yODYuNTE5LTEuOTk2LS4yMDctLjk5NS4yNTYtMi4wMSAxLjE0NS0yLjUwNS42MzMtLjM1NCAxLjA2NS0uOTgyIDEuMTY5LTEuN3MtLjEzNS0xLjQ0My0uNjQzLTEuOTZ6bS0xMi41ODQgNS40M2wtNC41LTQuMzY0IDEuODU3LTEuODU3IDIuNjQzIDIuNTA2IDUuNjQzLTUuNzg0IDEuODU3IDEuODU3LTcuNSA3LjY0MnoiLz48L3N2Zz4=); */
-        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0tMS45NTkgMTdsLTQuNS00LjMxOSAxLjM5NS0xLjQzNSAzLjA4IDIuOTM3IDcuMDIxLTcuMTgzIDEuNDIyIDEuNDA5LTguNDE4IDguNTkxeiIvPjwvc3ZnPg==);
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjMuMzM0IDExLjk2Yy0uNzEzLS43MjYtLjg3Mi0xLjgyOS0uMzkzLTIuNzI3LjM0Mi0uNjQuMzY2LTEuNDAxLjA2NC0yLjA2Mi0uMzAxLS42Ni0uODkzLTEuMTQyLTEuNjAxLTEuMzAyLS45OTEtLjIyNS0xLjcyMi0xLjA2Ny0xLjgwMy0yLjA4MS0uMDU5LS43MjMtLjQ1MS0xLjM3OC0xLjA2Mi0xLjc3LS42MDktLjM5My0xLjM2Ny0uNDc4LTIuMDUtLjIyOS0uOTU2LjM0Ny0yLjAyNi4wMzItMi42NDItLjc3Ni0uNDQtLjU3Ni0xLjEyNC0uOTE1LTEuODUtLjkxNS0uNzI1IDAtMS40MDkuMzM5LTEuODQ5LjkxNS0uNjEzLjgwOS0xLjY4MyAxLjEyNC0yLjYzOS43NzctLjY4Mi0uMjQ4LTEuNDQtLjE2My0yLjA1LjIyOS0uNjEuMzkyLTEuMDAzIDEuMDQ3LTEuMDYxIDEuNzctLjA4MiAxLjAxNC0uODEyIDEuODU3LTEuODAzIDIuMDgxLS43MDguMTYtMS4zLjY0Mi0xLjYwMSAxLjMwMnMtLjI3NyAxLjQyMi4wNjUgMi4wNjFjLjQ3OS44OTcuMzIgMi4wMDEtLjM5MiAyLjcyNy0uNTA5LjUxNy0uNzQ3IDEuMjQyLS42NDQgMS45NnMuNTM2IDEuMzQ3IDEuMTcgMS43Yy44ODguNDk1IDEuMzUyIDEuNTEgMS4xNDQgMi41MDUtLjE0Ny43MS4wNDQgMS40NDguNTE5IDEuOTk2LjQ3Ni41NDkgMS4xOC44NDQgMS45MDIuNzk4IDEuMDE2LS4wNjMgMS45NTMuNTQgMi4zMTcgMS40ODkuMjU5LjY3OC44MiAxLjE5NSAxLjUxNyAxLjM5OS42OTUuMjA0IDEuNDQ3LjA3MiAyLjAzMS0uMzU3LjgxOS0uNjAzIDEuOTM2LS42MDMgMi43NTQgMCAuNTg0LjQzIDEuMzM2LjU2MiAyLjAzMS4zNTcuNjk3LS4yMDQgMS4yNTgtLjcyMiAxLjUxOC0xLjM5OS4zNjMtLjk0OSAxLjMwMS0xLjU1MyAyLjMxNi0xLjQ4OS43MjQuMDQ2IDEuNDI3LS4yNDkgMS45MDItLjc5OC40NzUtLjU0OC42NjctMS4yODYuNTE5LTEuOTk2LS4yMDctLjk5NS4yNTYtMi4wMSAxLjE0NS0yLjUwNS42MzMtLjM1NCAxLjA2NS0uOTgyIDEuMTY5LTEuN3MtLjEzNS0xLjQ0My0uNjQzLTEuOTZ6bS0xMi41ODQgNS40M2wtNC41LTQuMzY0IDEuODU3LTEuODU3IDIuNjQzIDIuNTA2IDUuNjQzLTUuNzg0IDEuODU3IDEuODU3LTcuNSA3LjY0MnoiLz48L3N2Zz4=);
+        /* background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTIgMmM1LjUxNCAwIDEwIDQuNDg2IDEwIDEwcy00LjQ4NiAxMC0xMCAxMC0xMC00LjQ4Ni0xMC0xMCA0LjQ4Ni0xMCAxMC0xMHptMC0yYy02LjYyNyAwLTEyIDUuMzczLTEyIDEyczUuMzczIDEyIDEyIDEyIDEyLTUuMzczIDEyLTEyLTUuMzczLTEyLTEyLTEyem0tMS45NTkgMTdsLTQuNS00LjMxOSAxLjM5NS0xLjQzNSAzLjA4IDIuOTM3IDcuMDIxLTcuMTgzIDEuNDIyIDEuNDA5LTguNDE4IDguNTkxeiIvPjwvc3ZnPg==); */
         background-size: contain;
       }
 
@@ -1100,6 +1129,11 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+      }
+
+      .player .record-container {
+        height: 80px;
+        width: 144px;
       }
 
       .record-container {
@@ -1146,7 +1180,7 @@
         position: relative;
         /* background: rgba(255,255,255,.35); */
         text-align: center;
-        font-size: 2em;
+        font-size: 2rem;
         font-family: "Lora", sans-serif;
         font-style: italic;
         color: white;
@@ -1190,19 +1224,31 @@
       }
 
       .title {
-        font-size: 2.25em;
-        border-bottom: 2px solid white;
+        font-size: 3.35rem;
+        position: relative;
+        border: 1px solid white;
         text-transform: uppercase;
         margin-bottom: 1rem;
-        padding-bottom: 1rem;
+        padding: 1rem 0;
         color: white;
+      }
+
+      .title-gif {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        mix-blend-mode: soft-light;
+        object-fit: cover;
+        height: 100%;
       }
 
       .description {
         background-image: linear-gradient(rgba(0,0,0,.25), rgba(0,0,0,0));
         text-align: center;
         padding: 2rem 15%;
-        font-size: 1.5em;
+        font-size: 1.5rem;
         font-family: Lato;
         color: white;
         text-shadow: 0 0 20px rgba(0,0,0,0.3);
@@ -1219,7 +1265,7 @@
     <header class="header">
       <!-- <h1>Buy the vinyl!</h1> -->
       <div class="player">
-        <div class="record-container" style="height: 80px">
+        <div class="record-container">
           <img class="record sleave" src="record-cover-sleave.png">
           <img class="record vinyl" src="record-cover-record.png">
         </div>
@@ -1243,8 +1289,11 @@
       </div>
     </header>
     <div class="description">
-      <div class="title">Pre-sale ends June 16th</div>
-      There's a small window to get Hallowed River's debut album, Hindsight, on vinyl. Don't miss out on being one of only 300 to join this one-time-only limited run crowdfunding project and pledge $22 (or more &#128591;) to get yours.
+      <div class="title">
+        <img class="title-gif" src="https://media.giphy.com/media/T1zgJ7cp8tWla/source.gif">
+        Pre-sale ends June 16th
+      </div>
+      Don't miss out on being one of only 300 to join this one-time-only limited run crowdfunding project and pledge $22 (or more &#128591;) to get yours.
     </div>
     <div class="hero">
       <!-- <img class="record-spin" src="record.png"> -->
@@ -1255,7 +1304,7 @@
     </div>
     <div style="width: 100%; padding: 2rem 2rem 0 2rem;">
       <div class="action">
-        <span class="preorder" style="color: white;">Pre-order your vinyl</span>
+        <span class="preorder" style="color: white; text-shadow: 0 0 40px rgba(0,0,0,.5);">Pre-order your vinyl</span>
         <a class="button" onclick="window.checkout()" target="checkout" rel="nofollow" data-method="post" href="https://qrates.com/orders/new?project_id=19966">
           <span class="button-label">
             <i class="checkmark"></i><span>Buy now</span><br>
